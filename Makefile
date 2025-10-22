@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fernando <fernando@student.42.fr>          +#+  +:+       +#+         #
+#    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/15 21:28:22 by fernando         ###   ########.fr        #
+#    Updated: 2025/10/22 20:11:19 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ MLX_DIR = minilibx
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
 # --- SOURCES ---
-SRCS = main.c \
+SRCS =  main.c \
+		cleanup.c \
 		#parsing_map.c \
 		#draw.c \
 
