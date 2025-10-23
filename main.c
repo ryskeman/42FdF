@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:16:02 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/22 22:36:58 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/24 00:02:47 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int     ft_init_mlx(t_fdf *fdf)
     fdf->mlx_ptr = mlx_init();
     if (fdf->mlx_ptr == NULL)
         return (1);
-    fdf->win_ptr == mlx_new_window(fdf->mlx_ptr, 1920, 1080 "FdF");
+    fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, 1920, 1080, "FdF");
     if (fdf->win_ptr == NULL)
         return (1);
     fdf->data_img = malloc(sizeof(t_img));
@@ -66,7 +66,7 @@ int     ft_init_mlx(t_fdf *fdf)
     fdf->data_img->img = mlx_new_image(fdf->mlx_ptr, 1920, 1080);
     if (fdf->data_img->img == NULL)
         return (1);
-    fdf->data_img->add = mlx_get_data_addr (fdf->data_img->img,
+    fdf->data_img->addr = mlx_get_data_addr (fdf->data_img->img,
             &fdf->data_img->bpp, &fdf->data_img->line_len,
             &fdf->data_img->endian);
     fdf->data_img->w = 1920;
@@ -86,15 +86,24 @@ int     main(int ac, char **av)
     if (file_extension == NULL || ft_strncmp(file_extension, ".fdf", 4) != 0 )
         ft_error("Not valid extension. Use: .fdf extension\n", 1);
     ft_init(&fdf);
+
+    /* ----- TEST DUMMY VALUES TO MAP -------*/
+    /* Simulamos que el parsing se hizo para que ft_init_cam no falle */
+    fdf.width = 50;
+    fdf.height = 30;
     //ft_validate_storage(av[1], &fdf);
+
+    /* MLX & CAM INITIALIZATION */
     if (ft_init_mlx(&fdf) != 0)
-        ft_free_exit(&fdf, "Error during initialation of mlx", 1, 1);
+        ft_free_exit(&fdf, "Error during initialization of mlx", 1, 1);
     ft_init_cam(&fdf);
     //ft_calculate_isos(&fdf);
     //ft_draw_map(&fdf);
+
+    /* HOOKS */
     mlx_hook(fdf.win_ptr, 17, 0, ft_close, &fdf);
     //mlx_hook(fdf.win_ptr, 2, 1L << 0, ft_handle_keypress, &fdf);
-    mlx_hook(fdf.win_ptr);
+    mlx_loop(fdf.mlx_ptr);
     ft_free_exit(&fdf, NULL, 0, 1);
     return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernando <fernando@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/21 21:33:50 by fernando         ###   ########.fr       */
+/*   Updated: 2025/10/23 20:16:11 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_cam
 typedef struct s_img
 {
     void        *img;
-    char        *add;
+    char        *addr;
     int         bpp;
     int         line_len;
     int         endian;
