@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:47:24 by fernafer          #+#    #+#             */
-/*   Updated: 2025/07/01 16:42:54 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:33:58 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
 # include <stdint.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -66,6 +75,7 @@ char				**ft_split(char const *s, char charset);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char				*get_next_line(int fd);
 int					ft_printf(const char *format, ...);
 int					ft_putchar_fd_r(char c);
 int					ft_print_char(char c);

@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:16:02 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/24 00:02:47 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/24 19:08:02 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void    ft_init(t_fdf *file_map)
 {
     file_map->width = -1;
     file_map->height = 0;
+    file_map->infile = 0;
     file_map->matrix = NULL;
     file_map->tokens = NULL;
     file_map->data_cam = NULL;
@@ -37,9 +38,9 @@ void    ft_init_cam(t_fdf *fdf)
     fdf->data_cam = malloc(sizeof(t_cam));
     if (!fdf->data_cam)
         ft_free_exit(fdf, "malloc cam failed\n",1 ,1);
-    fdf->data_cam->angle = 0.523599;
+    fdf->data_cam->angle = 0.523599;            // 30º in Radians 
     sx = (double)fdf->data_img->w / (fdf->width * 2.0);
-    sx = (double)fdf->data_img->h / (fdf->height * 2.0);
+    sy = (double)fdf->data_img->h / (fdf->height * 2.0);
     base = sx;
     if (sy < sx)
         base = sy;
@@ -54,23 +55,26 @@ void    ft_init_cam(t_fdf *fdf)
 /* Initialize minilibx window and image */
 int     ft_init_mlx(t_fdf *fdf)
 {
+    const int   Win_W = 1280;
+    const int   Win_H = 720;
+
     fdf->mlx_ptr = mlx_init();
     if (fdf->mlx_ptr == NULL)
         return (1);
-    fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, 1920, 1080, "FdF");
+    fdf->win_ptr = mlx_new_window(fdf->mlx_ptr, Win_W, Win_H, "FdF");
     if (fdf->win_ptr == NULL)
         return (1);
     fdf->data_img = malloc(sizeof(t_img));
     if (fdf->data_img == NULL)
         return (1);
-    fdf->data_img->img = mlx_new_image(fdf->mlx_ptr, 1920, 1080);
+    fdf->data_img->img = mlx_new_image(fdf->mlx_ptr, Win_W, Win_H);
     if (fdf->data_img->img == NULL)
         return (1);
     fdf->data_img->addr = mlx_get_data_addr (fdf->data_img->img,
             &fdf->data_img->bpp, &fdf->data_img->line_len,
             &fdf->data_img->endian);
-    fdf->data_img->w = 1920;
-    fdf->data_img->h = 1080;
+    fdf->data_img->w = Win_W;
+    fdf->data_img->h = Win_H;
     return (0);
 }
 
@@ -97,6 +101,18 @@ int     main(int ac, char **av)
     if (ft_init_mlx(&fdf) != 0)
         ft_free_exit(&fdf, "Error during initialization of mlx", 1, 1);
     ft_init_cam(&fdf);
+
+    /*----------------------------------*/
+    /* DEBUGGING MESSAGES, DELETE AFTER */
+    /*----------------------------------*/
+    
+    // Añade esto después de ft_init_cam() en main.c:
+    ft_printf("✅ MLX initialized\n");
+    ft_printf("✅ Window size: %dx%d\n", fdf.data_img->w, fdf.data_img->h);
+    ft_printf("✅ Zoom: %.2f\n", fdf.data_cam->zoom);
+    ft_printf("✅ Angle: %.2f\n", fdf.data_cam->angle);
+    /*-----------------------------------*/
+    
     //ft_calculate_isos(&fdf);
     //ft_draw_map(&fdf);
 
