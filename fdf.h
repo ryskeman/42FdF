@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/25 13:05:49 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/25 16:42:09 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,21 @@ int				ft_init_mlx(t_fdf *fdf);
 int				main(int ac, char **av);
 
 /* parsing_map.c */
-void			ft_validate_storage(char *filename, t_fdf *fdf);
+int				ft_store_data(t_fdf *file_map, int width, int row,
+					char **tokens);
+int				ft_process_line_aux(int row, char **tokens, t_fdf *map,
+					int mode);
+void			ft_process_line(char *line, t_fdf *fdf, int row,
+					int mode);
+void			ft_reading_file(t_fdf *file_map, int mode, int row);
+void			ft_validate_storage(char *filename, t_fdf *file_map);
 
 /* draw.c */
 void			ft_put_pixel(t_img *img, int x, int y, int color);
 void			ft_calculate_isos(t_fdf *fdf);
 void			ft_draw_map(t_fdf *fdf);
+
+/* bresenham .c */
+/* utils.c */
 
 #endif

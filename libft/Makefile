@@ -6,7 +6,7 @@
 #    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 18:28:59 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/24 19:33:52 by fernafer         ###   ########.fr        #
+#    Updated: 2025/10/25 14:59:27 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES = ft_isalpha.c ft_isalnum.c ft_isdigit.c ft_isascii.c ft_isprint.c \
 	  ft_strdup.c ft_substr.c ft_strjoin.c ft_split.c ft_strtrim.c ft_itoa.c \
 	  ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 	  ft_putendl_fd.c ft_putnbr_fd.c ft_printf.c ft_formats_chars.c \
-	  ft_formats_ints.c ft_formats_hex.c get_next_line.c \
+	  ft_formats_ints.c ft_formats_hex.c ft_get_next_line.c \
 
 # OBJECTS LIST CREATOR
 OBJS = $(SOURCES:.c=.o)

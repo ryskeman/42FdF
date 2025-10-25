@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:47:24 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/25 01:59:59 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/25 14:59:13 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char				**ft_split(char const *s, char charset);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char				*get_next_line(int fd);
+char				*get_next_line(int fd, int flush);
 int					ft_printf(const char *format, ...);
 int					ft_putchar_fd_r(char c);
 int					ft_print_char(char c);
