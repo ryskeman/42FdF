@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/23 20:16:11 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/25 02:00:09 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_img
     int         h;
 }               t_img;
 
-/* Principal struct */
+/* Main struct */
 typedef struct s_fdf
 {
     int         width;
