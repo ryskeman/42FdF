@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:16:02 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/25 12:38:31 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/25 13:03:17 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,23 @@ int	main(int ac, char **av)
 	if (file_extension == NULL || ft_strncmp(file_extension, ".fdf", 4) != 0)
 		ft_error("Not valid extension. Use: .fdf extension\n", 1);
 	ft_init(&fdf);
-	/* ----- TEST DUMMY VALUES TO MAP -------*/
-	/* Simulamos que el parsing se hizo para que ft_init_cam no falle */
-	fdf.width = 50;
-	fdf.height = 30;
-	//ft_validate_storage(av[1], &fdf);
+	ft_validate_storage(av[1], &fdf);
+
 	/* MLX & CAM INITIALIZATION */
 	if (ft_init_mlx(&fdf) != 0)
 		ft_free_exit(&fdf, "Error during initialization of mlx", 1, 1);
 	ft_init_cam(&fdf);
+	
 	/*----------------------------------*/
 	/* DEBUGGING MESSAGES, DELETE AFTER */
 	/*----------------------------------*/	
-	// Añade esto después de ft_init_cam() en main.c:
 	ft_printf("✅ MLX initialized\n");
 	ft_printf("✅ Window size: %dx%d\n", fdf.data_img->w, fdf.data_img->h);
 	ft_printf("✅ Zoom: %.2f\n", fdf.data_cam->zoom);
 	ft_printf("✅ Angle: %.2f\n", fdf.data_cam->angle);
 	/*-----------------------------------*/
-	//ft_calculate_isos(&fdf);
-	//ft_draw_map(&fdf);
+	ft_calculate_isos(&fdf);
+	ft_draw_map(&fdf);
 	/* HOOKS */
 	mlx_hook(fdf.win_ptr, 17, 0, ft_close, &fdf);
 	//mlx_hook(fdf.win_ptr, 2, 1L << 0, ft_handle_keypress, &fdf);

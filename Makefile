@@ -6,7 +6,7 @@
 #    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/24 13:52:04 by fernafer         ###   ########.fr        #
+#    Updated: 2025/10/25 13:33:36 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 MLX_DIR = minilibx
 MLX_LIB = $(MLX_DIR)/libmlx.a
+MLX_OBJ = $(MLX_DIR)/obj
 
 # --- SOURCES ---
 SRCS =  main.c \
 		cleanup.c \
-		#parsing_map.c \
-		#draw.c \
+		parsing_map.c \
+		draw.c \
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -69,8 +70,8 @@ $(LIBFT):
 clean:
 	@echo "🧹	Cleaning object files..."
 	@rm -f $(OBJS)
+	@rm -rf $(MLX_OBJ)
 	@make -C $(LIBFT_DIR) clean
-	@make -C $(MLX_DIR) clean
 	@echo "Clean complete."
 
 # CLEANING FILES RULE
@@ -78,6 +79,7 @@ fclean: clean
 	@echo "🔥	Deep cleaning executable..."
 	@rm -f $(NAME)
 	@make -C $(LIBFT_DIR) fclean
+	@make -C $(MLX_DIR) clean
 	@echo "Deep clean complete."
 
 re: fclean all
