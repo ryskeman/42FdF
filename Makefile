@@ -6,7 +6,7 @@
 #    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/25 13:33:36 by fernafer         ###   ########.fr        #
+#    Updated: 2025/10/27 23:37:22 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =  main.c \
 		cleanup.c \
 		parsing_map.c \
 		draw.c \
+		utils.c \
 
 OBJS	= $(SRCS:.c=.o)
 
