@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 12:56:54 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/27 23:37:17 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/30 00:00:45 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_calculate_isos(t_fdf *fdf)
 		{
 			z = fdf->matrix[y][x].z * fdf->data_cam->z_scale;
 			fdf->matrix[y][x].xiso = (int)((x - y) * cos(angle)
-				* fdf->data_cam->zoom) + fdf->data_cam->x_off;
+					* fdf->data_cam->zoom) + fdf->data_cam->x_off;
 			fdf->matrix[y][x].yiso = (int)((x + y) * sin(angle)
-				* fdf->data_cam->zoom - z) + fdf->data_cam->y_off;
+					* fdf->data_cam->zoom - z) + fdf->data_cam->y_off;
 			x++;
 		}
 		y++;
@@ -59,7 +59,7 @@ void	ft_draw_map(t_fdf *fdf)
 		ft_free_exit(fdf, "Error rendering map\n", 1, 1);
 	/* Cleaning image */
 	bytes = (size_t)fdf->data_img->line_len
-	* (size_t)fdf->data_img->h;
+		* (size_t)fdf->data_img->h;
 	ft_bzero(fdf->data_img->addr, bytes);
 	/* Drawing wireframe */
 	ft_draw_wireframe(fdf);
@@ -82,14 +82,11 @@ void	ft_draw_wireframe(t_fdf *fdf)
 			// Conect with rigth node
 			if (x < fdf->width - 1)
 				/* DRAW BRESENHAM */
-
 			// Conect with belows node
 			if (y < fdf->height - 1)
 				/* DRAW BRESENHAM */
-			
 			x++;
 		}
 		y++;
 	}
 }
-

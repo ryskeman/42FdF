@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/29 23:21:53 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/30 00:02:36 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ typedef struct s_fdf
 	void		*win_ptr;
 }			t_fdf;
 
+/* Bresenham struct */
+typedef struct s_bresenham
+{
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+	int			err;
+	int			e2;
+}			t_bresenham;
+
 /* cleanup.c */
 int				ft_close(t_fdf *fdf);
 void			ft_error(char *msg, int exit_code);
@@ -98,6 +109,9 @@ void			ft_draw_map(t_fdf *fdf);
 void			ft_draw_wireframe(t_fdf *fdf);
 
 /* bresenham .c */
+void			ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node);
+void			ft_bresenham(t_img *img, t_node *a, t_node *b);
+
 /* utils.c */
 int				parse_token(t_node *node, char *token);
 int				is_valid_hexa(const char *str);

@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 13:10:04 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/27 23:36:59 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/30 00:01:27 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_store_data(t_fdf *file_map, int width, int row, char **tokens)
 		file_map->matrix[row][col].x = col;
 		file_map->matrix[row][col].y = row;
 		if (!parse_token(&file_map->matrix[row][col], tokens[col]))
-		 	return (0);
+			return (0);
 		col++;
 	}
 	return (1);
