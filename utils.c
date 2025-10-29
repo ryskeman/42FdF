@@ -6,12 +6,13 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:38:32 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/27 23:37:13 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/29 23:33:19 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/* Validates z value and color value */
 int	parse_token(t_node *node, char *token)
 {
 	char	*comma;
@@ -21,7 +22,7 @@ int	parse_token(t_node *node, char *token)
 	if (comma)
 	{
 		*comma = '\0';
-		if (ft_atoi_safe(token, &value) == 0)
+		if (ft_safe_atoi(token, &value) == 0)
 			return (0);
 		node->z = value;
 		if (!is_valid_hexa(comma + 1))
@@ -30,7 +31,7 @@ int	parse_token(t_node *node, char *token)
 	}
 	else
 	{
-		if (ft_atoi_safe(token, &value) == 0)
+		if (ft_safe_atoi(token, &value) == 0)
 			return (0);
 		node->z = value;
 		node->color = 0xFFFFFF;
@@ -55,4 +56,14 @@ void	ft_malloc_matrix(t_fdf *file_map)
 			ft_free_exit(file_map, "Parsing error: malloc failed\n", 1, 1);
 		i++;
 	}
+}
+
+/* Validates if an hexadecimal starts in 0x */
+int	is_valid_hexa(const char *str)
+{
+	if (ft_strlen(str) < 3)
+		return (0);
+	if (str[0] != '0' || (str[1] != 'x' && str[1] != 'X'))
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/27 23:36:56 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/29 23:21:53 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void			ft_draw_wireframe(t_fdf *fdf);
 /* bresenham .c */
 /* utils.c */
 int				parse_token(t_node *node, char *token);
+int				is_valid_hexa(const char *str);
 void			ft_malloc_matrix(t_fdf *file_map);
 
 #endif
