@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/30 00:02:36 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:28:06 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ void			ft_put_pixel(t_img *img, int x, int y, int color);
 void			ft_calculate_isos(t_fdf *fdf);
 void			ft_draw_map(t_fdf *fdf);
 void			ft_draw_wireframe(t_fdf *fdf);
+
+/* hooks.c */
+int				ft_handle_keypress(int keycode, t_fdf *fdf);
 
 /* bresenham .c */
 void			ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node);

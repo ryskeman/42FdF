@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:16:02 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/27 23:37:50 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:29:35 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_init_cam(t_fdf *fdf)
 	fdf->data_cam = malloc(sizeof(t_cam));
 	if (!fdf->data_cam)
 		ft_free_exit(fdf, "malloc cam failed\n", 1, 1);
-	fdf->data_cam->angle = 0.523599;// 30º in Radians
+	fdf->data_cam->angle = 0.523599;
 	sx = (double)fdf->data_img->w / (fdf->width * 2.0);
 	sy = (double)fdf->data_img->h / (fdf->height * 2.0);
 	base = sx;
@@ -91,25 +91,13 @@ int	main(int ac, char **av)
 		ft_error("Not valid extension. Use: .fdf extension\n", 1);
 	ft_init(&fdf);
 	ft_validate_storage(av[1], &fdf);
-
-	/* MLX & CAM INITIALIZATION */
 	if (ft_init_mlx(&fdf) != 0)
 		ft_free_exit(&fdf, "Error during initialization of mlx", 1, 1);
 	ft_init_cam(&fdf);
-	
-	/*----------------------------------*/
-	/* DEBUGGING MESSAGES, DELETE AFTER */
-	/*----------------------------------*/	
-	ft_printf("✅ MLX initialized\n");
-	ft_printf("✅ Window size: %dx%d\n", fdf.data_img->w, fdf.data_img->h);
-	ft_printf("✅ Zoom: %.2f\n", fdf.data_cam->zoom);
-	ft_printf("✅ Angle: %.2f\n", fdf.data_cam->angle);
-	/*-----------------------------------*/
 	ft_calculate_isos(&fdf);
 	ft_draw_map(&fdf);
-	/* HOOKS */
 	mlx_hook(fdf.win_ptr, 17, 0, ft_close, &fdf);
-	//mlx_hook(fdf.win_ptr, 2, 1L << 0, ft_handle_keypress, &fdf);
+	mlx_hook(fdf.win_ptr, 2, 1L << 0, ft_handle_keypress, &fdf);
 	mlx_loop(fdf.mlx_ptr);
 	ft_free_exit(&fdf, NULL, 0, 1);
 	return (0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/27 23:37:22 by fernafer         ###   ########.fr        #
+#    Updated: 2025/10/31 20:11:15 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS =  main.c \
 		cleanup.c \
 		parsing_map.c \
 		draw.c \
+		hooks.c \
 		utils.c \
+		bresenham.c \
 
 OBJS	= $(SRCS:.c=.o)
 

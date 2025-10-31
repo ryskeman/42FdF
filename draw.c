@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 12:56:54 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/30 00:00:45 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:31:50 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,10 @@ void	ft_draw_map(t_fdf *fdf)
 
 	if (!fdf || !fdf->data_img)
 		ft_free_exit(fdf, "Error rendering map\n", 1, 1);
-	/* Cleaning image */
 	bytes = (size_t)fdf->data_img->line_len
 		* (size_t)fdf->data_img->h;
 	ft_bzero(fdf->data_img->addr, bytes);
-	/* Drawing wireframe */
 	ft_draw_wireframe(fdf);
-	/* Show image to window/screen */
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr,
 		fdf->data_img->img, 0, 0);
 }
@@ -79,12 +76,12 @@ void	ft_draw_wireframe(t_fdf *fdf)
 		x = 0;
 		while (x < fdf->width)
 		{
-			// Conect with rigth node
 			if (x < fdf->width - 1)
-				/* DRAW BRESENHAM */
-			// Conect with belows node
+				ft_bresenham(fdf->data_img, &fdf->matrix[x][y],
+					&fdf->matrix[x][y + 1]);
 			if (y < fdf->height - 1)
-				/* DRAW BRESENHAM */
+				ft_bresenham(fdf->data_img, &fdf->matrix[x][y],
+					&fdf->matrix[x + 1][y]);
 			x++;
 		}
 		y++;
