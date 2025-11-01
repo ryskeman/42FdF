@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:41:09 by fernafer          #+#    #+#             */
-/*   Updated: 2025/10/31 20:27:31 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/01 21:33:22 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node)
 	b->dy = abs(dy_val);
 	b->sx = 1;
 	if (dx_val < 0)
+		b->sx = -1;
+	b->sy = 1;
+	if (dy_val < 0)
 		b->sy = -1;
 	b->err = b->dx - b->dy;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:38 by fernando          #+#    #+#             */
-/*   Updated: 2025/10/31 19:53:15 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:33:50 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 /* Close function using X symbol */
 int	ft_close(t_fdf *fdf)
 {
+	/*************DEBUGGING****************/
+	ft_printf("Cerrando ventana...\n");
+	/**************************************/
 	ft_free_exit(fdf, NULL, 0, 1);
 	return (0);
 }

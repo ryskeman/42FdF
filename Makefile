@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/10/31 20:11:15 by fernafer         ###   ########.fr        #
+#    Updated: 2025/11/01 21:23:25 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # --- PROJECT INFO ---
 NAME = fdf
 CC = cc
+OBJ_DIR = obj
 
 # --- LIBRARIES ---
 LIBFT_DIR = libft
@@ -21,7 +22,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 MLX_DIR = minilibx
 MLX_LIB = $(MLX_DIR)/libmlx.a
-MLX_OBJ = $(MLX_DIR)/obj
+MLX_OBJ_DIR = $(MLX_DIR)/obj
 
 # --- SOURCES ---
 SRCS =  main.c \
@@ -32,7 +33,7 @@ SRCS =  main.c \
 		utils.c \
 		bresenham.c \
 
-OBJS	= $(SRCS:.c=.o)
+OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 # --- FLAGS ---
 CFLAGS = -Wall -Wextra -Werror
@@ -48,11 +49,13 @@ FSANITIZE = -fsanitize=address -g3
 # --- RULES ---
 all: $(NAME)
 
-$(NAME): $(MLX_LIB) $(LIBFT) $(OBJS)
+$(NAME): $(MLX_LIB) $(LIBFT) $(OBJ_DIR) $(OBJS)
 	@echo "🔗	Linking $(NAME)..."
-	#$(CC) $(OBJS) $(LIBFT) $(LFLAGS) $(FSANITIZE) -o $(NAME)
 	$(CC) $(OBJS) $(LIBFT) $(LFLAGS) $(FSANITIZE) -o $(NAME)
 	@echo "✅ $(NAME) compiled succesfully!"
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 # MiniLibX COMPILING RULE
 $(MLX_LIB):
@@ -65,14 +68,15 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 # RULE TO CREATE OBJECTS
-%.o: %.c
-	@echo "⚙️	Compiling $< into $@"
+$(OBJ_DIR)/%.o: %.c $(OBJ_DIR)
+	@echo "⚙️	Compiling $< into $@ (in $(OBJ_DIR)/)"
 	$(CC) $(CFLAGS) $(FSANITIZE) $(INCLUDES) -c $< -o $@
 
 # CLEANING OBJECTS RULE
 clean:
 	@echo "🧹	Cleaning object files..."
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
+	@rm -rf *.o
 	@rm -rf $(MLX_OBJ)
 	@make -C $(LIBFT_DIR) clean
 	@echo "Clean complete."
