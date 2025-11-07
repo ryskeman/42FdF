@@ -6,7 +6,7 @@
 #    By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 17:44:36 by fernafer          #+#    #+#              #
-#    Updated: 2025/11/07 19:13:08 by fernafer         ###   ########.fr        #
+#    Updated: 2025/11/07 23:57:28 by fernafer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS_BONUS = main_bonus.c \
 		hooks_bonus.c \
 		utils_bonus.c \
 		bresenham_bonus.c \
+		colors_bonus.c \
 
 SRC= $(addprefix src/, $(SRCS))
 SRC_BONUS= $(addprefix bonus/, $(SRCS_BONUS))

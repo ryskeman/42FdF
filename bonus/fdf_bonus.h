@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/07 19:34:30 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 00:55:56 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_cam
 	double		angle;
 	double		x_off;
 	double		y_off;
+	int			color_mode;
 }			t_cam;
 
 /* Image buffer */
@@ -59,6 +60,8 @@ typedef struct s_fdf
 	int			width;
 	int			height;
 	int			infile;
+	int			z_min;
+	int			z_max;
 	t_node		**matrix;
 	t_cam		*data_cam;
 	t_img		*data_img;
@@ -76,9 +79,29 @@ typedef struct s_bresenham
 	int			sy;
 	int			err;
 	int			e2;
+	int			e2val;
+	int			x_c;
+	int			y_c;
 }			t_bresenham;
 
-/* cleanup.c */
+/* Store data to set color */
+typedef struct s_color
+{
+	t_node		*a;
+	t_node		*b;
+	int			x;
+	int			y;
+	int			color_mode;
+	double		r_f;
+	double		g_f;
+	double		b_f;
+	int			r;
+	int			g;
+	int			b_;
+}			t_color;
+
+
+/* cleanup_bonus.c */
 int				ft_close(t_fdf *fdf);
 void			ft_error(char *msg, int exit_code);
 void			ft_free_exit(t_fdf *fdf, char *msg, int exit_code,
@@ -86,13 +109,13 @@ void			ft_free_exit(t_fdf *fdf, char *msg, int exit_code,
 void			ft_free_tokens(char ***tokens_ptr);
 void			ft_free_matrix(t_node **nodes, int height);
 
-/* main.c */
+/* main_bonus.c */
 void			ft_init(t_fdf *file_map);
 void			ft_init_cam(t_fdf *fdf);
 int				ft_init_mlx(t_fdf *fdf);
 int				main(int ac, char **av);
 
-/* parsing_map.c */
+/* parsing_map_bonus.c */
 int				ft_store_data(t_fdf *file_map, int width, int row,
 					char **tokens);
 int				ft_process_line_aux(int row, char **tokens, t_fdf *map,
@@ -102,22 +125,31 @@ void			ft_process_line(char *line, t_fdf *fdf, int row,
 void			ft_reading_file(t_fdf *file_map, int mode, int row);
 void			ft_validate_storage(char *filename, t_fdf *file_map);
 
-/* draw.c */
+/* draw_bonus.c */
 void			ft_put_pixel(t_img *img, int x, int y, int color);
 void			ft_calculate_isos(t_fdf *fdf);
 void			ft_draw_map(t_fdf *fdf);
 void			ft_draw_wireframe(t_fdf *fdf);
+int				ft_get_color_z(int z, t_fdf *fdf);
 
-/* hooks.c */
+/* hooks_bonus.c */
 int				ft_handle_keypress(int keycode, t_fdf *fdf);
 
-/* bresenham .c */
+/* bresenham_bonus.c */
 void			ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node);
-void			ft_bresenham(t_img *img, t_node *a, t_node *b);
+void			ft_bresenham(t_img *img, t_node *a, t_node *b, int color_mode);
+void			ft_assign_z(t_fdf *fdf);
 
-/* utils.c */
+/* utils_bonus.c */
 int				parse_token(t_node *node, char *token);
 int				is_valid_hexa(const char *str);
 void			ft_malloc_matrix(t_fdf *file_map);
+
+/* colors_bonus.c */
+void			ft_find_z_minmax(t_fdf *fdf);
+void			ft_color_config(t_node *a, t_node *b, t_color *conf, t_bresenham *b_data);
+double			ft_get_percent(int start, int end, int current);
+int				ft_interpolate(int start, int end, double t);
+int				ft_get_color(t_color *conf);
 
 #endif

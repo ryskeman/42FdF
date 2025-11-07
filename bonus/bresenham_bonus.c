@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:41:09 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/07 19:34:44 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 00:53:15 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,54 @@ void	ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node)
 }
 
 /* Apply Bresenham algorithm to draw lines */
-void	ft_bresenham(t_img *img, t_node *a, t_node *b)
+void	ft_bresenham(t_img *img, t_node *a, t_node *b, int color_mode)
 {
 	t_bresenham	b_data;
-	int			e2_val;
-	int			x_current;
-	int			y_current;
+	t_color		conf;
 
 	ft_init_bresenham(&b_data, a, b);
-	x_current = a->xiso;
-	y_current = a->yiso;
+	b_data.x_c = a->xiso;
+	b_data.y_c = a->yiso;
 	while (1)
 	{
-		ft_put_pixel (img, x_current, y_current, a->color);
-		if (x_current == b->xiso && y_current == b->yiso)
+		ft_color_config(a, b, &conf, &b_data);
+		ft_put_pixel (img, b_data.x_c, b_data.y_c, ft_get_color(&conf));
+		if (b_data.x_c == b->xiso && b_data.y_c == b->yiso)
 			break ;
-		e2_val = 2 * b_data.err;
-		if (e2_val > -b_data.dy)
+		b_data.e2val = 2 * b_data.err;
+		if (b_data.e2val > -b_data.dy)
 		{
 			b_data.err -= b_data.dy;
-			x_current += b_data.sx;
+			b_data.x_c += b_data.sx;
 		}
-		if (e2_val < b_data.dx)
+		if (b_data.e2val < b_data.dx)
 		{
 			b_data.err += b_data.dx;
-			y_current += b_data.sy;
+			b_data.y_c += b_data.sy;
 		}
+	}
+}
+
+/* Assign node color by z values */
+void	ft_assign_z(t_fdf *fdf)
+{
+	int		i;
+	int		j;
+	t_node	*node;
+
+	i = 0;
+	while(i < fdf->height)
+	{
+		j = 0;
+		while(j < fdf->width)
+		{
+			node = &fdf->matrix[i][j];
+			if (node->color == -1)
+				node->color = ft_get_color_z(node->z, fdf);
+			if (node->color == -1)
+				node->color = ft_get_color_z(node->z, fdf);
+			j++;
+		}
+		i++;
 	}
 }
