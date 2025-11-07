@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 12:56:54 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/01 21:57:25 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:34:35 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 /* Put pixel in mlx img */
 void	ft_put_pixel(t_img *img, int x, int y, int color)
