@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:16:02 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 10:49:32 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 15:32:48 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_init(t_fdf *file_map)
 	file_map->width = -1;
 	file_map->height = 0;
 	file_map->infile = 0;
+	file_map->z_max = -2147483648;
+	file_map->z_min = 2147483647;
 	file_map->matrix = NULL;
 	file_map->tokens = NULL;
 	file_map->data_cam = NULL;

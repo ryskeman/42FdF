@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:39:39 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 14:53:50 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 15:33:16 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_find_z_minmax(t_fdf *fdf)
 		{
 			if (fdf->matrix[i][j].z < fdf->z_min)
 				fdf->z_min = fdf->matrix[i][j].z;
-			if (fdf->matrix[i][j].z < fdf->z_max)
+			if (fdf->matrix[i][j].z > fdf->z_max)
 				fdf->z_max = fdf->matrix[i][j].z;
 			j++;
 		}
