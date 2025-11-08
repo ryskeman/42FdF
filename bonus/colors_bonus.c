@@ -6,14 +6,15 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:39:39 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 00:16:32 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 11:00:44 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
 /* Set up color struct */
-void	ft_color_config(t_node *a, t_node *b, t_color *conf, t_bresenham *b_data)
+void	ft_color_config(t_node *a, t_node *b, t_color *conf,
+			t_bresenham *b_data)
 {
 	conf->a = a;
 	conf->b = b;
@@ -39,9 +40,9 @@ void	ft_find_z_minmax(t_fdf *fdf)
 		j = 0;
 		while (j < fdf->width)
 		{
-			if(fdf->matrix[i][j].z < fdf->z_min)
+			if (fdf->matrix[i][j].z < fdf->z_min)
 				fdf->z_min = fdf->matrix[i][j].z;
-			if(fdf->matrix[i][j].z < fdf->z_max)
+			if (fdf->matrix[i][j].z < fdf->z_max)
 				fdf->z_max = fdf->matrix[i][j].z;
 			j++;
 		}
@@ -88,6 +89,6 @@ int	ft_get_color(t_color *conf)
 		conf->b_f = 1.5;
 	conf->r = fmin(255, (int)(conf->r * conf->r_f));
 	conf->g = fmin(255, (int)(conf->g * conf->g_f));
-	conf->b_ = fmin(255, (int)(conf->b_ * conf->b_f));	
+	conf->b_ = fmin(255, (int)(conf->b_ * conf->b_f));
 	return ((conf->r << 16) | (conf->g << 8) | conf->b_);
 }

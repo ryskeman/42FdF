@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 20:52:43 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 00:55:56 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 11:02:59 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct s_color
 	int			b_;
 }			t_color;
 
-
 /* cleanup_bonus.c */
 int				ft_close(t_fdf *fdf);
 void			ft_error(char *msg, int exit_code);
@@ -134,6 +133,7 @@ int				ft_get_color_z(int z, t_fdf *fdf);
 
 /* hooks_bonus.c */
 int				ft_handle_keypress(int keycode, t_fdf *fdf);
+int				ft_handle_zoom(int keycode, int x, int y, void *param);
 
 /* bresenham_bonus.c */
 void			ft_init_bresenham(t_bresenham *b, t_node *a, t_node *b_node);
@@ -147,7 +147,8 @@ void			ft_malloc_matrix(t_fdf *file_map);
 
 /* colors_bonus.c */
 void			ft_find_z_minmax(t_fdf *fdf);
-void			ft_color_config(t_node *a, t_node *b, t_color *conf, t_bresenham *b_data);
+void			ft_color_config(t_node *a, t_node *b, t_color *conf,
+					t_bresenham *b_data);
 double			ft_get_percent(int start, int end, int current);
 int				ft_interpolate(int start, int end, double t);
 int				ft_get_color(t_color *conf);

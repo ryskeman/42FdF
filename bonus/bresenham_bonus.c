@@ -6,7 +6,7 @@
 /*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:41:09 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 00:53:15 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 10:55:16 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_bresenham(t_img *img, t_node *a, t_node *b, int color_mode)
 	ft_init_bresenham(&b_data, a, b);
 	b_data.x_c = a->xiso;
 	b_data.y_c = a->yiso;
+	conf.color_mode = color_mode;
 	while (1)
 	{
 		ft_color_config(a, b, &conf, &b_data);
@@ -68,10 +69,10 @@ void	ft_assign_z(t_fdf *fdf)
 	t_node	*node;
 
 	i = 0;
-	while(i < fdf->height)
+	while (i < fdf->height)
 	{
 		j = 0;
-		while(j < fdf->width)
+		while (j < fdf->width)
 		{
 			node = &fdf->matrix[i][j];
 			if (node->color == -1)
