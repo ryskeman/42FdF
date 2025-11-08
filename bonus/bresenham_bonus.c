@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:41:09 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/08 10:55:16 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 14:49:06 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void	ft_assign_z(t_fdf *fdf)
 		while (j < fdf->width)
 		{
 			node = &fdf->matrix[i][j];
-			if (node->color == -1)
-				node->color = ft_get_color_z(node->z, fdf);
 			if (node->color == -1)
 				node->color = ft_get_color_z(node->z, fdf);
 			j++;

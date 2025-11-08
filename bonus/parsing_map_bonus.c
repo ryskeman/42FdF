@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 13:10:04 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/07 19:34:22 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 14:35:36 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,6 @@ void	ft_validate_storage(char *filename, t_fdf *file_map)
 	if (file_map->infile < 0)
 		ft_free_exit(file_map, "Error opening file\n", 1, 1);
 	ft_reading_file(file_map, 1, 0);
+	ft_find_z_minmax(file_map);
+	ft_assign_z(file_map);
 }

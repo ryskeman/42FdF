@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernafer <fernafer@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fernafer <fernafer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:38:32 by fernafer          #+#    #+#             */
-/*   Updated: 2025/11/07 19:34:25 by fernafer         ###   ########.fr       */
+/*   Updated: 2025/11/08 14:44:25 by fernafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	parse_token(t_node *node, char *token)
 		if (ft_safe_atoi(token, &value) == 0)
 			return (0);
 		node->z = value;
-		node->color = 0xFFFFFF;
+		node->color = -1;
 	}
-	if (node->color == 0x000000)
-		node->color = 0xFFFFFF;
+	if (node->color == 0x000000 || node->color == 0xFFFFFF)
+		node->color = -1;
 	return (1);
 }
 
